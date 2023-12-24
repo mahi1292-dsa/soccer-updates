@@ -18,7 +18,7 @@ export class RapidApiKeyInterceptor implements HttpInterceptor {
         const Key = '0b5eaf520aaf6d07935f284cf840bf29';
         const newRequest = request.clone({
             setHeaders: {
-                // 'x-rapidapi-key': `${Key}`,
+                'x-rapidapi-key': `${Key}`,
             },
         });
         return next.handle(newRequest);
