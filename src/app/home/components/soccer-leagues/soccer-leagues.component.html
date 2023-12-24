@@ -1,4 +1,5 @@
-<div>
+<div class="foot-ball-updates">
+  <h4>Foot Ball Updates</h4>
   <div class="soccer-leagues">
     <button id="englandSelect" (click)="getStandings('england',39)" [ngClass]="selectedLeague === 'england' ? 'active' : ''">
       England
@@ -19,7 +20,7 @@
 </div>
 <hr />
 <div *ngIf="soccerLeagues && soccerLeagues.length > 0; else noData">
-  <table id="leagueDataTable">
+  <table id="soccerLeaguesTable">
     <thead>
       <th></th>
       <th></th>

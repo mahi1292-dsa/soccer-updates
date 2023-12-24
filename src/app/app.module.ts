@@ -8,7 +8,7 @@ import { RapidApiKeyInterceptor } from './services/app.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
