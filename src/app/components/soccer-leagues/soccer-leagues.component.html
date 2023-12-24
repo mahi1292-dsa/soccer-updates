@@ -1,0 +1,56 @@
+<section>
+  <div class="soccer-leagues">
+    <button id="englandSelect" (click)="getStandings('england',39)" [class.active]="selectedLeague === 'england'">
+      England
+    </button>
+    <button id="spainSelect" (click)="getStandings('spain', 140)" [class.active]="selectedLeague === 'spain'">
+      Spain
+    </button>
+
+    <button id="germanySelect" (click)="getStandings('germany', 78)" [class.active]="selectedLeague === 'germany'">
+      Germany
+    </button>
+    <button id="itlaySelect" (click)="getStandings('itlay',135)" [class.active]="selectedLeague === 'itlay'">
+      Itlay
+    </button>
+    <button id="franceSelect" (click)="getStandings('france',61)" [class.active]="selectedLeague === 'france'">
+      France
+    </button>
+  </div>
+</section>
+<hr />
+<div *ngIf="soccerLeagues && soccerLeagues.length > 0; else noData">
+  <table id="soccerLeaguesTable">
+    <thead>
+      <th></th>
+      <th></th>
+      <th>Name</th>
+      <th>Games</th>
+      <th>W</th>
+      <th>L</th>
+      <th>D</th>
+      <th>Goal Difference</th>
+      <th>Points</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let league of soccerLeagues">
+        <td>{{ league.rank }}</td>
+        <td><img src="{{ league.team.logo }}" width="35" height="30" /></td>
+        <td>
+          <a (click)="getSoccerTeamData(league.team.id)">{{
+            league.team.name
+            }}</a>
+        </td>
+        <td>{{ league.all.played }}</td>
+        <td>{{ league.all.win }}</td>
+        <td>{{ league.all.lose }}</td>
+        <td>{{ league.all.draw }}</td>
+        <td>{{ league.goalsDiff }}</td>
+        <td>{{ league.all.win * 3 + league.all.draw }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noData>
+  <p>No data found </p>
+</ng-template>
