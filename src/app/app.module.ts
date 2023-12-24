@@ -3,21 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SoccerLeaguesComponent } from './components/soccer-leagues/soccer-leagues.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RapidApiKeyInterceptor } from './services/app.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SoccerLeaguesComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  exports:[SoccerLeaguesComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

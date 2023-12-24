@@ -1,26 +1,25 @@
-<section>
+<div>
   <div class="soccer-leagues">
-    <button id="englandSelect" (click)="getStandings('england',39)" [class.active]="selectedLeague === 'england'">
+    <button id="englandSelect" (click)="getStandings('england',39)" [ngClass]="selectedLeague === 'england' ? 'active' : ''">
       England
     </button>
-    <button id="spainSelect" (click)="getStandings('spain', 140)" [class.active]="selectedLeague === 'spain'">
+    <button id="spainSelect" (click)="getStandings('spain', 140)" [ngClass]="selectedLeague === 'spain' ? 'active' : ''">
       Spain
     </button>
-
-    <button id="germanySelect" (click)="getStandings('germany', 78)" [class.active]="selectedLeague === 'germany'">
+    <button id="germanySelect" (click)="getStandings('germany', 78)" [ngClass]="selectedLeague === 'germany' ? 'active' : ''">
       Germany
     </button>
-    <button id="itlaySelect" (click)="getStandings('itlay',135)" [class.active]="selectedLeague === 'itlay'">
+    <button id="itlaySelect" (click)="getStandings('itlay',135)" [ngClass]="selectedLeague === 'itlay' ? 'active' : ''">
       Itlay
     </button>
-    <button id="franceSelect" (click)="getStandings('france',61)" [class.active]="selectedLeague === 'france'">
+    <button id="franceSelect" (click)="getStandings('france',61)" [ngClass]="selectedLeague === 'france' ? 'active' : ''">
       France
     </button>
   </div>
-</section>
+</div>
 <hr />
 <div *ngIf="soccerLeagues && soccerLeagues.length > 0; else noData">
-  <table id="soccerLeaguesTable">
+  <table id="leagueDataTable">
     <thead>
       <th></th>
       <th></th>

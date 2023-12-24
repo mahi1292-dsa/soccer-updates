@@ -15,10 +15,11 @@ export class SoccerLeaguesComponent implements OnInit {
   public selectedLeague: string | null = null;
   public soccerLeagues: StandingsData[] = [];
   private standingsSub: Subscription = new Subscription;
+  private selctedLeagueSub: Subscription = new Subscription;
   constructor(
     private footballService: FootBallService,
-    private router : Router
-  ) {}
+    private router: Router
+  ) { }
 
   ngOnInit() {
     const leagueData = this.footballService.selectedLeague;
@@ -27,9 +28,9 @@ export class SoccerLeaguesComponent implements OnInit {
     }
   }
 
-  getStandings(league: string, leagueCode:number) {
+  getStandings(league: string, leagueCode: number) {
     this.selectedLeague = league;
-    this.footballService.selectedLeague = {league:league, code:leagueCode};
+    this.footballService.selectedLeague = { league: league, code: leagueCode };
     this.standingsSub = this.footballService
       .getStandings(league, leagueCode)
       .subscribe(
@@ -46,12 +47,15 @@ export class SoccerLeaguesComponent implements OnInit {
       );
   }
 
-  getSoccerTeamData(leagueId:number){ //dt:23-12
-    this.router.navigate(['/soccer-teams', leagueId])
+  getSoccerTeamData(leagueId: number) { //dt:23-12
+    this.router.navigate(['/soccer-teams', leagueId ? leagueId : 0])
   }
   ngOnDestroy(): void {
     if (this.standingsSub) {
       this.standingsSub.unsubscribe();
+    }
+    if(this.selctedLeagueSub){
+      this.selctedLeagueSub.unsubscribe();
     }
   }
 
