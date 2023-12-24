@@ -15,7 +15,6 @@ export class SoccerLeaguesComponent implements OnInit {
   public selectedLeague: string | null = null;
   public soccerLeagues: StandingsData[] = [];
   private standingsSub: Subscription = new Subscription;
-  private selctedLeagueSub: Subscription = new Subscription;
   constructor(
     private footballService: FootBallService,
     private router: Router
@@ -31,20 +30,27 @@ export class SoccerLeaguesComponent implements OnInit {
   getStandings(league: string, leagueCode: number) {
     this.selectedLeague = league;
     this.footballService.selectedLeague = { league: league, code: leagueCode };
-    this.standingsSub = this.footballService
-      .getStandings(league, leagueCode)
-      .subscribe(
-        (data: LeagueApiResponse) => {
-          if (data && data.response && data.response.length > 0) {
-            this.soccerLeagues = data.response[0].league.standings[0];
-          } else {
-            console.error('Invalid API response.');
+    let data = localStorage.getItem(`${league}+${leagueCode}`);
+    if (data) {
+      this.soccerLeagues = JSON.parse(data);
+    } else {
+      this.standingsSub = this.footballService
+        .getStandings(league, leagueCode)
+        .subscribe(
+          (data: LeagueApiResponse) => {
+            if (data && data.response && data.response.length > 0) {
+              this.soccerLeagues = data.response[0].league.standings[0];
+              localStorage.setItem(`${league}+${leagueCode}`, JSON.stringify(this.soccerLeagues));//caching data in localStorage
+            } else {
+              console.error('Invalid API response.');
+            }
+          },
+          (error: HttpErrorResponse) => {
+            console.error('Error fetching data', error);
           }
-        },
-        (error: HttpErrorResponse) => {
-          console.error('Error fetching data', error);
-        }
-      );
+        );
+    }
+    
   }
 
   getSoccerTeamData(leagueId: number) { //dt:23-12
@@ -53,9 +59,6 @@ export class SoccerLeaguesComponent implements OnInit {
   ngOnDestroy(): void {
     if (this.standingsSub) {
       this.standingsSub.unsubscribe();
-    }
-    if(this.selctedLeagueSub){
-      this.selctedLeagueSub.unsubscribe();
     }
   }
 
