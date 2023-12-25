@@ -27,12 +27,19 @@ export class SoccerTeamDetailComponent implements OnInit {
   }
 
   getTeamScores(teamNo: number) {
-    this.footballService
+    let data = localStorage.getItem(`detail+${teamNo}+2023`);
+    if(data){
+      this.fixtures = JSON.parse(data);
+    }else{
+      this.footballService
       .getTeamScoresOfTopTen(teamNo)
       .subscribe((data: FixtureApiResponse) => {
         this.fixtures = data.response;
+        localStorage.setItem(`detail+${teamNo}+2023`, JSON.stringify(this.fixtures));
         this.selectedLeague = this.fixtures[0].league.country.toLowerCase();
       });
+    }
+    
   }
 
   goToLeagueSelection(): void {

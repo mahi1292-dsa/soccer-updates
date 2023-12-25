@@ -26,8 +26,8 @@ export class FootBallService {
     return this.http
       .get<LeagueApiResponse>(
         `${this.API}/standings?league=${leagueCode}&season=${season}`
-        // `${this.API}/standings?league=${this.leagueId[league]}&season=${season}`
-      )
+ 
+        )
       .pipe(
         map((response: LeagueApiResponse) => {
           return response;
