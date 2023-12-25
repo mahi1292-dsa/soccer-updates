@@ -1,3 +1,27 @@
-td{
-    margin: 5px;
+#soccerLeagueTable {
+    width: 100%;
+
+    th {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: left;
+        background-color: hsla(130, 80%, 40%, 0.699);
+        color: #ffffff;
+    }
+
+    tr {
+        background: #fdf6f6;
+    }
+
+    tr:hover {
+        background: rgb(160, 156, 156);
+    }
+}
+.spinnerCss{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    i{
+        color: green;
+    }
 }

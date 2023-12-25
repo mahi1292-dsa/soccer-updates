@@ -15,6 +15,7 @@ export class SoccerLeaguesComponent implements OnInit {
   public selectedLeague: string | null = null;
   public soccerLeagues: StandingsData[] = [];
   private standingsSub: Subscription = new Subscription;
+  public loader:boolean = false;
   constructor(
     private footballService: FootBallService,
     private router: Router
@@ -29,16 +30,19 @@ export class SoccerLeaguesComponent implements OnInit {
 
   getStandings(league: string, leagueCode: number) {
     this.selectedLeague = league;
+    this.loader = true;
     this.footballService.selectedLeague = { league: league, code: leagueCode };
     let data = localStorage.getItem(`${league}+${leagueCode}`);
     if (data) {
       this.soccerLeagues = JSON.parse(data);
+      this.loader = false;
     } else {
       this.standingsSub = this.footballService
         .getStandings(league, leagueCode)
         .subscribe(
           (data: LeagueApiResponse) => {
             if (data && data.response && data.response.length > 0) {
+              this.loader = false;
               this.soccerLeagues = data.response[0].league.standings[0];
               localStorage.setItem(`${league}+${leagueCode}`, JSON.stringify(this.soccerLeagues));//caching data in localStorage
             } else {
@@ -53,8 +57,8 @@ export class SoccerLeaguesComponent implements OnInit {
     
   }
 
-  getSoccerTeamData(leagueId: number) { //dt:23-12
-    this.router.navigate(['/soccer-teams', leagueId ? leagueId : 0])
+  getSoccerTeamData(leagueId: number): void { //dt:23-12
+    this.router.navigate(['/soccer-teams', leagueId])
   }
   ngOnDestroy(): void {
     if (this.standingsSub) {

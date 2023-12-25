@@ -1,5 +1,5 @@
-<div *ngIf="fixtures && fixtures.length > 0; else noRecords">
-    <table id="leagueTable">
+<div *ngIf="fixtures && fixtures.length > 0; else nofixtureRecords">
+    <table id="soccerLeagueTable">
       <tbody>
         <tr *ngFor="let fixture of fixtures">
           <td>
@@ -31,8 +31,11 @@
           
         </tr>
         <tr>
-          <td colspan="7">
-            <button class="button" class="active" (click)="goToLeagueSelection()">
+          <td>
+          </td>
+          <td colspan="5" (click)="goToLeagueSelection()">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;&nbsp;
+            <button class="button" class="active" >
               Back
             </button>
           </td>
@@ -41,8 +44,11 @@
     </table>
   </div>
   
-  <ng-template #noRecords>
-    <!-- Display the "No records found" message -->
-    <p>No team found</p>
+  <ng-template #nofixtureRecords>
+    <p *ngIf="!loader && !fixtures.length">No team found</p>
   </ng-template>
+  
+  <div *ngIf="loader" class="spinnerCss">
+    <i class="fa fa-spinner fa-spin"></i>
+  </div>
   

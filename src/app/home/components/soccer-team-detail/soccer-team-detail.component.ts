@@ -12,7 +12,7 @@ export class SoccerTeamDetailComponent implements OnInit {
   teamCode: number = 0;
   selectedLeague: string = '';
   fixtures: Fixture[] = [];
-
+  public loader:boolean = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -27,19 +27,22 @@ export class SoccerTeamDetailComponent implements OnInit {
   }
 
   getTeamScores(teamNo: number) {
+    this.loader = true;
     let data = localStorage.getItem(`detail+${teamNo}+2023`);
-    if(data){
+    if (data) {
       this.fixtures = JSON.parse(data);
-    }else{
+      this.loader = false;
+    } else {
       this.footballService
-      .getTeamScoresOfTopTen(teamNo)
-      .subscribe((data: FixtureApiResponse) => {
-        this.fixtures = data.response;
-        localStorage.setItem(`detail+${teamNo}+2023`, JSON.stringify(this.fixtures));
-        this.selectedLeague = this.fixtures[0].league.country.toLowerCase();
-      });
+        .getTeamScoresOfTopTen(teamNo)
+        .subscribe((data: FixtureApiResponse) => {
+          this.fixtures = data.response;
+          this.loader = false;
+          localStorage.setItem(`detail+${teamNo}+2023`, JSON.stringify(this.fixtures));
+          this.selectedLeague = this.fixtures[0].league.country.toLowerCase();
+        });
     }
-    
+
   }
 
   goToLeagueSelection(): void {
