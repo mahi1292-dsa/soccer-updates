@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: SPACE-EVENLY;
-    background: linear-gradient(263deg, #efdada, #f6faff);
+    background: #e6e8e9;
     height: 7vh;
     margin-bottom: 1%;
     border-radius: 35px;
@@ -16,7 +16,6 @@
 
 .active {
     color: green;
-    background: rgb(155, 48, 48);
 }
 a{
     text-decoration: underline;
@@ -26,10 +25,7 @@ a.active{
     color: blue;
 }
 button {
-    height: 5vh;
-    width: auto;
-    color: green;
-    background: linear-gradient(white, rgb(143, 143, 143));
+    border: none;
 }
 
 button.active {
@@ -47,12 +43,13 @@ button:hover {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    border-radius: 30px;
 
     th {
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: left;
-        background-color: hsla(130, 80%, 40%, 0.699);
+        background-color: hsl(227.6deg 57.72% 33.54% / 69.9%);
         color: #ffffff;
     }
 
