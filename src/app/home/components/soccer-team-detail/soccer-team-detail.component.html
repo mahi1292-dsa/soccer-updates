@@ -33,21 +33,20 @@
         <tr>
           <td>
           </td>
-          <td colspan="5" (click)="goToLeagueSelection()">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp;&nbsp;
-            <button class="button" class="active" >
-              Back
-            </button>
-          </td>
+         
         </tr>
       </tbody>
     </table>
   </div>
-  
+  <div colspan="5" (click)="goToLeagueSelection()">
+    <button class="button btnCls">
+      Back
+    </button>
+  </div>
   <ng-template #nofixtureRecords>
     <p *ngIf="!loader && !fixtures.length">No team found</p>
   </ng-template>
-  
+
   <div *ngIf="loader" class="spinnerCss">
     <i class="fa fa-spinner fa-spin"></i>
   </div>
