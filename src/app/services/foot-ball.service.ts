@@ -4,12 +4,12 @@ import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LeagueApiResponse } from '../models/soccer-league.model';
 import { FixtureApiResponse } from '../models/soccer-fixture.model';
-
+import { environment } from '../../environments/environment'
 @Injectable({
   providedIn: 'root',
 })
 export class FootBallService {
-  private API = 'https://v3.football.api-sports.io';
+  private API = environment.FOOT_BALL_HOST_URL;
   private readonly currentYear: number = new Date().getFullYear();
 
   selectedLeague: selectedLeagueModal = { league: '', code: 0 };
