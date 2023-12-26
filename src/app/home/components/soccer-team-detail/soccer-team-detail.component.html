@@ -1,53 +1,42 @@
 <div *ngIf="fixtures && fixtures.length > 0; else nofixtureRecords">
-    <table id="soccerLeagueTable">
-      <tbody>
-        <tr *ngFor="let fixture of fixtures">
-          <td>
-            <img
-              [src]="fixture.teams.home.logo"
-              alt="{{ fixture.teams.home.name }}"
-              width="30"
-              height="30"
-            />
-          </td>
-          <td>
-            {{ fixture.teams.home.name }}
-          </td>
-          <td>{{ fixture.score.fulltime.home }}</td>
-          <td>-</td>
-          <td>
-            {{ fixture.score.fulltime.away }}
-          </td>
-          <td>{{ fixture.teams.away.name }}</td>
-          <td>
-            <img
-              [src]="fixture.teams.away.logo"
-              alt="{{ fixture.teams.away.name }}"
-              width="30"
-              height="30"
-            />
-          </td>
-         
-          
-        </tr>
-        <tr>
-          <td>
-          </td>
-         
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div colspan="5" (click)="goToLeagueSelection()">
-    <button class="button btnCls">
-      Back
-    </button>
-  </div>
-  <ng-template #nofixtureRecords>
-    <p *ngIf="!loader && !fixtures.length">No team found</p>
-  </ng-template>
+  <table id="soccerLeagueTable">
+    <tbody>
+      <tr *ngFor="let fixture of fixtures">
+        <td>
+          <img [src]="fixture.teams.home.logo" alt="{{ fixture.teams.home.name }}" width="30" height="30" />
+        </td>
+        <td>
+          {{ fixture.teams.home.name }}
+        </td>
+        <td>{{ fixture.score.fulltime.home }}</td>
+        <td>-</td>
+        <td>
+          {{ fixture.score.fulltime.away }}
+        </td>
+        <td>{{ fixture.teams.away.name }}</td>
+        <td>
+          <img [src]="fixture.teams.away.logo" alt="{{ fixture.teams.away.name }}" width="30" height="30" />
+        </td>
 
-  <div *ngIf="loader" class="spinnerCss">
-    <i class="fa fa-spinner fa-spin"></i>
-  </div>
-  
+
+      </tr>
+      <tr>
+        <td>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div colspan="5" (click)="goToLeagueSelection()">
+  <button class="button btnCls">
+    Back
+  </button>
+</div>
+<ng-template #nofixtureRecords>
+  <p *ngIf="!loader && !fixtures.length">No team found</p>
+</ng-template>
+
+<div *ngIf="loader" class="spinnerCss">
+  <i class="fa fa-spinner fa-spin"></i>
+</div>

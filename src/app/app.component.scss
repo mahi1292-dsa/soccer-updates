@@ -1,8 +1,9 @@
-.soccer-leagues{
+.soccer-leagues {
     display: flex;
     align-items: center;
     justify-content: SPACE-EVENLY;
-    .active{
+
+    .active {
         color: green;
         background: rgb(155, 48, 48);
     }

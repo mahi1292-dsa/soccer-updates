@@ -1,19 +1,23 @@
 <div class="foot-ball-updates">
   <h4>Foot Ball Updates</h4>
   <div class="soccer-leagues">
-    <button id="englandSelect" (click)="getStandings('england',39)" [ngClass]="selectedLeague === 'england' ? 'active' : ''">
+    <button id="englandSelect" (click)="getStandings('england',39)"
+      [ngClass]="selectedLeague === 'england' ? 'active' : ''">
       England
     </button>
-    <button id="spainSelect" (click)="getStandings('spain', 140)" [ngClass]="selectedLeague === 'spain' ? 'active' : ''">
+    <button id="spainSelect" (click)="getStandings('spain', 140)"
+      [ngClass]="selectedLeague === 'spain' ? 'active' : ''">
       Spain
     </button>
-    <button id="germanySelect" (click)="getStandings('germany', 78)" [ngClass]="selectedLeague === 'germany' ? 'active' : ''">
+    <button id="germanySelect" (click)="getStandings('germany', 78)"
+      [ngClass]="selectedLeague === 'germany' ? 'active' : ''">
       Germany
     </button>
     <button id="itlaySelect" (click)="getStandings('itlay',135)" [ngClass]="selectedLeague === 'itlay' ? 'active' : ''">
       Itlay
     </button>
-    <button id="franceSelect" (click)="getStandings('france',61)" [ngClass]="selectedLeague === 'france' ? 'active' : ''">
+    <button id="franceSelect" (click)="getStandings('france',61)"
+      [ngClass]="selectedLeague === 'france' ? 'active' : ''">
       France
     </button>
   </div>

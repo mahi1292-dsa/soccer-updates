@@ -1,9 +1,10 @@
-.foot-ball-updates{
-    h4{
+.foot-ball-updates {
+    h4 {
         color: #04aa6d;
         text-align: center;
     }
 }
+
 .soccer-leagues {
     display: flex;
     align-items: center;
@@ -17,13 +18,16 @@
 .active {
     color: green;
 }
-a{
+
+a {
     text-decoration: underline;
 }
-a.active{
+
+a.active {
     text-decoration: none;
     color: blue;
 }
+
 button {
     border: none;
 }

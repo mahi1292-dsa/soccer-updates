@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LeagueApiResponse, StandingsData } from 'src/app/models/soccer-league.model';
 import { FootBallService } from 'src/app/services/foot-ball.service';
@@ -15,7 +15,7 @@ export class SoccerLeaguesComponent implements OnInit {
   public selectedLeague: string | null = null;
   public soccerLeagues: StandingsData[] = [];
   private standingsSub: Subscription = new Subscription;
-  public loader:boolean = false;
+  public loader: boolean = false;
   constructor(
     private footballService: FootBallService,
     private router: Router
@@ -54,7 +54,7 @@ export class SoccerLeaguesComponent implements OnInit {
           }
         );
     }
-    
+
   }
 
   getSoccerTeamData(leagueId: number): void { //dt:23-12

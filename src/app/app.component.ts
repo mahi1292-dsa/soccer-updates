@@ -8,14 +8,6 @@ import { FootBallService } from './services/foot-ball.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // selectedLeague: string = '';
-  // constructor(private router: Router, private footballService:FootBallService) { }
-  
-  // getStandings(league: string, leagueCode: number) {
-  //   this.selectedLeague = league;
-  //   this.footballService.selectedLeague = { league: league, code: leagueCode };
-  //   this.router.navigate(['soccer-teams']);
-  // }
 }
 
 

@@ -17,15 +17,18 @@
         background: rgb(160, 156, 156);
     }
 }
-.spinnerCss{
+
+.spinnerCss {
     justify-content: center;
     display: flex;
     align-items: center;
-    i{
+
+    i {
         color: green;
     }
 }
-.btnCls{
+
+.btnCls {
     background: blue;
     width: 10%;
     border-radius: 51px;

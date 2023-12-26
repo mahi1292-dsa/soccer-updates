@@ -12,12 +12,12 @@ export class SoccerTeamDetailComponent implements OnInit {
   teamCode: number = 0;
   selectedLeague: string = '';
   fixtures: Fixture[] = [];
-  public loader:boolean = false;
+  public loader: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private footballService: FootBallService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
